@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrollment Status</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-teal-100">
+
+    <div class="container mx-auto mt-8 p-6 bg-gray-800 text-white border rounded-md shadow-lg">
+        <p class="text-xl font-bold text-blue-300 mb-4">
+            Congratulations! You've successfully enrolled in:
+        </p>
+        <p class="text-gray-300 mb-4">
+            Explore the courses you've chosen below:
+        </p>
+
+        <!-- Add your course content here -->
+
+        <a href="/scourse/<%=course.id%>"
+            class="block w-full bg-blue-500 text-white rounded-md py-3 px-6 hover:bg-blue-600 transition duration-300">
+            View Courses
+        </a>
+    </div>
+
+</body>
+
+</html>
