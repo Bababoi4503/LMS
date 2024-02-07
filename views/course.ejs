@@ -4,68 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= courseName %>
-    </title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <title><%= courseName %></title>
+    <!-- Use the direct Tailwind CSS CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
 </head>
 
-<body class="bg-blue-100">
+<body class="bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 text-gray-800">
     <div class="flex items-center">
         <div class="container mx-auto flex items-center justify-center p-8">
             <!-- Left Side: Course Details -->
             <div class="w-full md:w-4/5 px-9">
-                <div class="flex items-center"><a class="mr-2" href="/educator">
+                <div class="flex items-center">
+                    <!-- Use a different background color for the Go to Dashboard button -->
+                    <a class="mr-2" href="/educator">
                         <div class="flex items-center justify-right">
-                            <img src="https://cdn-icons-png.flaticon.com/512/7518/7518214.png"
-                                class="w-35 h-11  my-3 flex items-center justify-middle" alt="view course">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3176/3176194.png"
+                                class="w-35 h-11 my-3 flex items-center justify-middle" alt="dashboard icon">
 
-                            <div
-                                class="block bg-blue-500 w-30 h-12 text-white rounded-md  px-4 hover:bg-blue-600 transition duration-300">
-                                Go to Dashboard
+                            <div class="block bg-teal-500 w-30 h-12 text-white rounded-md px-4 hover:bg-teal-600 transition duration-300">
+                                Back to Dashboard
                             </div>
                         </div>
                     </a>
-                    <h2 class="text-5xl ml-10 font-semibold mb-4">
+                    <h2 class="text-5xl ml-10 font-semibold mb-4 text-gray-800">
                         Course : <%= courseName %>
                     </h2>
                 </div>
 
-                <p>
-                    <%= courseDescription %>
-                </p>
-                <div class="mt-2 w-full md:w-4/5 pl-8">
-                    <div class="mb-4">
-                        <h3 class="text-xl font-semibold mb-2">Add New Chapter</h3>
+              <!-- Course Description Container -->
+<div class="bg-blue-100 p-6 rounded-md">
+    <p class="text-gray-800">
+        <%= courseDescription %>
+    </p>
+</div>
 
-                        <form action='/chapter/' method="post">
-                            <div class="flex items-center">
-                                <input type="hidden" name="courseId" value=<%=courseId %>>
-                                <input type="text" placeholder="Chapter Name" name="chapterName"
-                                    class="flex-grow border-gray-300 rounded-l-md px-3 py-2 focus:outline-none focus:border-blue-500"
-                                    required>
-                                <input type="submit"
-                                    class="bg-blue-500 text-white rounded-r-md px-4 py-2 hover:bg-blue-600 transition duration-300"
-                                    value="+Add">
-                            </div>
-                        </form>
-                    </div>
+<!-- Add New Chapter Form Container -->
+<div class="mt-4 bg-blue-200 p-4 rounded-md">
+    <h3 class="text-xl font-semibold mb-2 text-gray-800">Add New Chapter</h3>
+    <form action='/chapter/' method="post">
+        <div class="flex items-center">
+            <input type="hidden" name="courseId" value="<%=courseId %>">
+            <input type="text" placeholder="Chapter Name" name="chapterName"
+                class="flex-grow border-gray-300 rounded-l-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                required>
+            <input type="submit"
+                class="bg-green-500 text-white rounded-md py-2 hover:bg-green-600 transition duration-300"
+                value="Add">
+        </div>
+    </form>
+</div>
 
-                    <div class="mt-5 p-10">
-                        <div class="space-y-2">
-                            <% for (var i=0; i < chapters.length; i++) { %>
-                                <!-- Chapter 1 -->
-                                <div class="flex items-center justify-between border-b border-gray-400 p-4">
-                                    <span class="text-lg font-bold">Chapter <%= i+1 %> : <%= chapters[i].name %> </span>
-                                    <a href="/chapter/<%= chapters[i].id %>"><button
-                                            class="border bg-green-300 text-white hover:bg-green-500 transition duration-300 border-gray-400 px-4 py-2 rounded">
-                                            + Add
-                                            pages</button></a>
-                                </div>
-                                <% } %>
-                        </div>
-                    </div>
-                </div>
+<!-- Chapters List Container -->
+<div class="mt-5 bg-blue-200 p-6 rounded-md">
+    <div class="space-y-2">
+        <% for (var i=0; i < chapters.length; i++) { %>
+        <div class="flex items-center justify-between border-b border-gray-400 p-4 bg-white rounded-md">
+            <span class="text-lg font-bold text-gray-800">
+                Chapter <%= i+1 %> : <%= chapters[i].name %>
+            </span>
+            <a href="/chapter/<%= chapters[i].id %>">
+                <button class=" bg-green-500 border-gray-400 text-white rounded-md py-2 hover:bg-green-600 transition duration-300">
+                    Add Pages
+                </button>
+            </a>
+        </div>
+        <% } %>
+    </div>
+</div>
+
             </div>
         </div>
     </div>

@@ -67,20 +67,24 @@ passport.use(new LocalStrategy({
 
 
 passport.serializeUser(function (user, done) {
-    console.log("serializing user in session ", user.id);
+    console.log("Serializing user in session ", user.id);
     done(null, user.id);
 });
 
 passport.deserializeUser(async function (id, done) {
-    User.findByPk(id)
-    .then(user => {
+    try {
+        const user = await User.findByPk(id);
+
         if (user) {
-            done(null, user); 
+            done(null, user);
         } else {
-            done(null, false); 
+            done(null, false);
         }
-    })
+    } catch (error) {
+        done(error, false);
+    }
 });
+
 
 app.use(function (request, response, next) {
     response.locals.messages = request.flash();
@@ -107,7 +111,7 @@ app.get("/signup", async (request, response) => {
 })
 
 
-//route for new user signup "user"
+//Route for new user signUp
 app.post("/user", async (request, response) => {
     const hashedPwd = await bcrypt.hash(request.body.password, saltRounds);
     console.log(hashedPwd);
@@ -175,7 +179,7 @@ app.get("/Educator", connectEnsureLogin.ensureLoggedIn(), async (request, respon
 
 
 
-// Routing--realted--password-change
+// Routes for password-change
 app.get('/password', connectEnsureLogin.ensureLoggedIn(), async (request, response) => {
     try {
         response.render("password.ejs")
@@ -212,7 +216,7 @@ app.get("/pwdSucces", async (request, response) => {
 })
 
 
-//Route-for-creating-course
+//Route for Creating a Course
 app.post("/course", connectEnsureLogin.ensureLoggedIn(), async (request, response) => {
     try {
         const course = await Course.create({
@@ -245,7 +249,8 @@ app.get("/course/:courseId", connectEnsureLogin.ensureLoggedIn(), async (request
     }
 })
 
-// routing-related-to-creation-of-chapters
+// Routes for Creating of Chapters
+
 app.post('/chapter/', connectEnsureLogin.ensureLoggedIn(), async (request, response) => {
     try {
         const chapter = await Chapter.create({
@@ -276,48 +281,64 @@ app.get('/chapter/:chapterId', connectEnsureLogin.ensureLoggedIn(), async (reque
     }
 })
 
-// routing--related-to-creation-of-page
+// Routes for Creation Of Pages
 app.post("/page", connectEnsureLogin.ensureLoggedIn(), async (request, response) => {
-
     try {
+        const { pageName, chapterId, pageContent } = request.body;
+
+        if (!pageName || !chapterId || !pageContent) {
+            return response.status(400).json({ error: 'Page name, chapter ID, and page content are required.' });
+        }
+
         const page = await Page.create({
-            name: request.body.pageName,
-            chapterId: request.body.chapterId,
-            content: request.body.pageContent,
+            name: pageName,
+            chapterId: chapterId,
+            content: pageContent,
         });
 
         console.log("New page added!");
-        response.redirect(`/chapter/${request.body.chapterId}`);
+        response.redirect(`/chapter/${chapterId}`);
     } catch (error) {
-        console.log("New page not added!");
-        console.log(error);
+        console.log("Error adding a new page:", error);
         return response.status(422).json(error);
     }
 });
+
 app.get("/editPage/:pageId", connectEnsureLogin.ensureLoggedIn(), async (request, response) => {
     try {
         const page = await Page.findOne({ where: { id: request.params.pageId } });
-        await response.render("editPage.ejs", {
+        response.render("editPage.ejs", {
             page: page
-        })
+        });
     } catch (error) {
-        console.log("Error in getting the details of a particular page");
+        console.log("Error getting details of a particular page:", error);
     }
-})
+});
+
 app.post("/savePageChanges", connectEnsureLogin.ensureLoggedIn(), async (request, response) => {
     const { pageId, editedContent } = request.body;
+
     try {
         console.log('Received Page ID:', pageId);
+
+        if (!pageId || !editedContent) {
+            return response.status(400).json({ error: 'Page ID and edited content are required.' });
+        }
+
         await Page.update(
             { content: editedContent },
-            { where: { id: pageId } })
+            { where: { id: pageId } }
+        );
 
+        response.status(200).send('Page edited successfully');
     } catch (error) {
-        console.log("Error in editing the page")
+        console.log("Error editing the page:", error);
+        response.status(500).json({ error: 'Internal Server Error' });
     }
-})
+});
 
-//==============================Student routes ==================================
+
+//Student user Routes
 app.get("/Student", connectEnsureLogin.ensureLoggedIn(), async (request, response) => {
     console.log("student logged in successfully");
     const availcourses = await Course.findAll();
@@ -432,7 +453,7 @@ app.get("/spage/:pageId", connectEnsureLogin.ensureLoggedIn(), async (request, r
 
 
 })
-//================Routes-related-to-completion-of-page================
+//Route for Page Completion
 app.post("/completePage/:pageId", connectEnsureLogin.ensureLoggedIn(), async (request, response) => {
 
     const page = await Page.findByPk(request.params.pageId)
@@ -467,7 +488,6 @@ app.post("/completePage/:pageId", connectEnsureLogin.ensureLoggedIn(), async (re
 
 
 
-//========================View Report===============================
 //Routing--related-to-view-report-to-educator
 app.get('/courseEnrollments/:courseId', connectEnsureLogin.ensureLoggedIn(), async (request, response) => {
     try {
@@ -495,7 +515,7 @@ app.get('/courseEnrollments/:courseId', connectEnsureLogin.ensureLoggedIn(), asy
 });
 
 
-//======================Sign Out===================
+//User Sign Out
 app.get("/signout", (request, response, next) => {
     request.logout((err) => {
         if (err) { return next(err); }
