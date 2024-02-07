@@ -61,21 +61,31 @@ Welcome to our Learning Management System (LMS)! This platform is designed to st
 
 ## Demonstration Of Learning Management System
 
-## 1.This is the Index page of my LMS
+## 1. This is the Index page of my LMS
    Where the User can Access the Signup and Signin options.
 ![Learning Management System - Google Chrome 07-02-2024 19_50_41](https://github.com/Bababoi4503/LMS/assets/140642491/55a9299f-c731-44ad-b508-3930e6dd6a14)
 
-## 2.This is the Signup page.
+## 2. This is the Signup page.
    Where the User can create his/her own account as an Educator or a Student.
 ![Learning Management System - Google Chrome 07-02-2024 20_01_31](https://github.com/Bababoi4503/LMS/assets/140642491/7a066b5a-6a8d-4671-a2d6-c138cccb9c2d)
 
-## 3.This is the Signin page.
+## 3. This is the Signin page.
    Where the User can login to their existing account ,if the account doesn't exists it throws an error of User not found.
 ![Learning Management System - Google Chrome 07-02-2024 20_08_34](https://github.com/Bababoi4503/LMS/assets/140642491/7fa1335b-7284-4f9d-864a-33d8499b447e)
-## 4.Student Homepage.
+
+## 4. Student Homepage.(Student Dashboard)
    As i have singed in as a student this the homepage which a student can access their course by enrolling in it and completing it.
 ![Student Homepage - Opera 07-02-2024 20_16_05](https://github.com/Bababoi4503/LMS/assets/140642491/5f84690b-2e8e-4ee6-ae16-11bdfdb2e5a5)
 
-   
+## 5. Course View.
+   In this the student can start a course and track the course completion.
+![Student Homepage - Opera 07-02-2024 20_21_18](https://github.com/Bababoi4503/LMS/assets/140642491/a6b8b4fe-90bf-4b2a-ac0a-d899f64376c7)
+
+## 6. Educator Hompage.(Educator Dashboard)
+   This is the dashboard of an Educator where they can create and the courses that they have created.
+![Student Homepage - Opera 07-02-2024 20_28_31](https://github.com/Bababoi4503/LMS/assets/140642491/7125f7c0-ce4e-4308-b9c2-82b547c0efbe)
+
+## So this was a breif overview of my Learning Mangement System if u all want to get to know more about it
+Here is my Live app link : https://lms-app-h6j1.onrender.com
 
 
