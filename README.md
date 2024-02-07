@@ -63,7 +63,7 @@ Welcome to our Learning Management System (LMS)! This platform is designed to st
 
 ## 1. This is the Index page of my LMS
    Where the User can Access the Signup and Signin options.
-![Learning Management System - Google Chrome 07-02-2024 19_50_41](https://github.com/Bababoi4503/LMS/assets/140642491/55a9299f-c731-44ad-b508-3930e6dd6a14)
+![Student Homepage - Opera 07-02-2024 20_35_07](https://github.com/Bababoi4503/LMS/assets/140642491/3826132f-4f6b-4e48-86e0-c839506d0975)
 
 ## 2. This is the Signup page.
    Where the User can create his/her own account as an Educator or a Student.
