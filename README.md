@@ -72,5 +72,10 @@ Welcome to our Learning Management System (LMS)! This platform is designed to st
 ## 3.This is the Signin page.
    Where the User can login to their existing account ,if the account doesn't exists it throws an error of User not found.
 ![Learning Management System - Google Chrome 07-02-2024 20_08_34](https://github.com/Bababoi4503/LMS/assets/140642491/7fa1335b-7284-4f9d-864a-33d8499b447e)
+## 4.Student Homepage.
+   As i have singed in as a student this the homepage which a student can access their course by enrolling in it and completing it.
+![Student Homepage - Opera 07-02-2024 20_16_05](https://github.com/Bababoi4503/LMS/assets/140642491/5f84690b-2e8e-4ee6-ae16-11bdfdb2e5a5)
+
+   
 
 
