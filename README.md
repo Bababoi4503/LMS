@@ -63,7 +63,7 @@ Welcome to our Learning Management System (LMS)! This platform is designed to st
 
 ## 1. This is the Index page of my LMS
    Where the User can Access the Signup and Signin options.
-![Learning Management System - Opera 07-02-2024 20_45_09](https://github.com/Bababoi4503/LMS/assets/140642491/57ae4e78-b5ae-4eba-b6c8-3cb80cd1d0a3)
+![Student Homepage - Opera 07-02-2024 20_35_07](https://github.com/Bababoi4503/LMS/assets/140642491/c42a1cd6-ddaf-48cf-8cae-a6d111f670cc)
 
 ## 2. This is the Signup page.
    Where the User can create his/her own account as an Educator or a Student.
@@ -75,7 +75,7 @@ Welcome to our Learning Management System (LMS)! This platform is designed to st
 
 ## 4. Student Homepage.(Student Dashboard)
    As i have singed in as a student this the homepage which a student can access their course by enrolling in it and completing it.
-![Student Homepage - Opera 07-02-2024 20_16_05](https://github.com/Bababoi4503/LMS/assets/140642491/5f84690b-2e8e-4ee6-ae16-11bdfdb2e5a5)
+![Learning Management System - Opera 07-02-2024 20_45_09](https://github.com/Bababoi4503/LMS/assets/140642491/613eb241-44d9-4cef-a34b-1ff4befc48a3)
 
 ## 5. Course View.
    In this the student can start a course and track the course completion.
